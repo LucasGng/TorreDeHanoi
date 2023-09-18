@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 import java.util.Random;
 public class TorreHanoi {
@@ -36,6 +36,8 @@ public class TorreHanoi {
     public boolean isWinCond() {
         return winCond;
     }
+
+    public void setWinCond(boolean bool){this.winCond = bool; }
 
     public Stack getStack1() {
         return stack1;
@@ -78,24 +80,30 @@ public class TorreHanoi {
                 if(op2 == 2){
                     stack2.push(stack1.getTopData());
                     stack1.pull();
+                    winCond = isSorted( gameMode,stack2, size);
                     break;
                 }
                 else if(op2 == 3){
                     stack3.push(stack1.getTopData());
                     stack1.pull();
+                    winCond = isSorted( gameMode,stack3, size);
                     break;
                 }
+                break;
             case 2:
                 if(op2==1){
                     stack1.push(stack2.getTopData());
                     stack2.pull();
+                    winCond = isSorted( gameMode,stack1, size);
                     break;
                 }
                 else if(op2==3){
                     stack3.push(stack2.getTopData());
                     stack2.pull();
+                    winCond = isSorted( gameMode,stack3, size);
                     break;
                 }
+                break;
 
             case 3:
                 if(op2 == 1){
@@ -108,6 +116,7 @@ public class TorreHanoi {
                     stack3.pull();
                     break;
                 }
+                break;
 
         }
 
@@ -118,29 +127,38 @@ public class TorreHanoi {
                 if(op2 == 2){
                     stack2.push(stack1.getTopData());
                     stack1.pull();
+
+
                     break;
                 }
                 else if(op2 == 3){
                     stack3.push(stack1.getTopData());
                     stack1.pull();
+
+
                     break;
                 }
+                break;
             case 2:
                 if(op2==1){
                     stack1.push(stack2.getTopData());
                     stack2.pull();
+
                     break;
                 }
                 else if(op2==3){
                     stack3.push(stack2.getTopData());
                     stack2.pull();
+
                     break;
                 }
+                break;
 
             case 3:
                 if(op2 == 1){
                     stack1.push(stack3.getTopData());
                     stack3.pull();
+
                     break;
                 }
                 else if(op2 == 2){
@@ -148,6 +166,7 @@ public class TorreHanoi {
                     stack3.pull();
                     break;
                 }
+                break;
         }
     }
 

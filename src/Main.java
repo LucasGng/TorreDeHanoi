@@ -25,9 +25,9 @@ public class Main {
                case 1:
                    torre.fazerMovimento();
                    torre.count();
-                   torre.isSorted(gameType,torre.getStack1(),size);
-                   torre.isSorted(gameType,torre.getStack2(),size);
-                   torre.isSorted(gameType,torre.getStack3(),size);
+                   if(torre.isWinCond()){
+                       System.out.println("O jogo foi finalizado");
+                   }
 
                    break;
                case 2:
