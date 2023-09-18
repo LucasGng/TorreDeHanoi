@@ -15,17 +15,20 @@ public class Stack {
             top.setNext(temp);
         }
     }
-
-    public void pull(){
+    public int getTopData(){
+        return top.getData();
+    }
+    public Node getTop(){
+        return top;
+    }
+    public int pull(){
         Node temp;
         if(top == null){
             System.out.println("Pilha Vazia! Impossivel remover!!");
         }
-        else{
-            temp = top;
-            top = top.getNext();
-            temp = null;
-        }
+        temp = top;
+        top = top.getNext();
+        return temp.getData();
     }
 
     public void show(){
