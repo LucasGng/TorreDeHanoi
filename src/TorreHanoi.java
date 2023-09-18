@@ -80,13 +80,13 @@ public class TorreHanoi {
                 if(op2 == 2){
                     stack2.push(stack1.getTopData());
                     stack1.pull();
-                    winCond = isSorted( gameMode,stack2, size);
+                    winCond = !isSorted( gameMode,stack2, size);
                     break;
                 }
                 else if(op2 == 3){
                     stack3.push(stack1.getTopData());
                     stack1.pull();
-                    winCond = isSorted( gameMode,stack3, size);
+                    winCond = !isSorted( gameMode,stack3, size);
                     break;
                 }
                 break;
@@ -94,13 +94,13 @@ public class TorreHanoi {
                 if(op2==1){
                     stack1.push(stack2.getTopData());
                     stack2.pull();
-                    winCond = isSorted( gameMode,stack1, size);
+                    winCond = !isSorted( gameMode,stack1, size);
                     break;
                 }
                 else if(op2==3){
                     stack3.push(stack2.getTopData());
                     stack2.pull();
-                    winCond = isSorted( gameMode,stack3, size);
+                    winCond = !isSorted( gameMode,stack3, size);
                     break;
                 }
                 break;
@@ -109,11 +109,13 @@ public class TorreHanoi {
                 if(op2 == 1){
                     stack1.push(stack3.getTopData());
                     stack3.pull();
+                    winCond = !isSorted( gameMode,stack1, size);
                     break;
                 }
                 else if(op2 == 2){
                     stack2.push(stack3.getTopData());
                     stack3.pull();
+                    winCond = !isSorted( gameMode,stack2, size);
                     break;
                 }
                 break;
@@ -252,12 +254,12 @@ public class TorreHanoi {
     }
 
     public boolean isSorted(int mode, Stack stack, int size){
-        Stack pilha = new Stack();
+        Stack pilha = new Stack(); // pilha temporaria
         switch(mode){
             case 1:
                 pilha.push(stack.pull());
                 int count = 0;
-                while(stack.getTop() != null && count != size){
+                while(stack.getTop() != null && count != size+1){
                     if(pilha.getTopData() >= stack.getTopData()){
                         pilha.push(stack.pull());
                         count++;
@@ -270,7 +272,7 @@ public class TorreHanoi {
             case 2:
                 pilha.push(stack.pull());
                 int cont = 0;
-                while(stack.getTop() != null && cont != size){
+                while(stack.getTop() != null && cont != size+1){
                     if(pilha.getTopData() <= stack.getTopData()){
                         pilha.push(stack.pull());
                         cont++;
